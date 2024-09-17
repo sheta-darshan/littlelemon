@@ -13,4 +13,6 @@ urlpatterns = [
     path('restaurant/booking', include(router.urls)),
     path('message/', views.msg),
     path('api-token-auth/', obtain_auth_token),
+    path('about/', views.about, name="about"),
+    path('book/', views.book, name="book"),
 ]
