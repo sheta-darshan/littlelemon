@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'restaurant',
-    'rest_framework'
+    'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +134,20 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configure Django REST framework settings
+REST_FRAMEWORK = {
+    # Specify the default authentication classes
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',  # For token-based authentication
+        # 'rest_framework.authentication.BasicAuthentication',  # For basic authentication
+        'rest_framework.authentication.SessionAuthentication',  # For session-based authentication
+    ],
+    # Specify the default permission classes
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',  # All API views will require authentication by default
+    ],
+    # Optional: configure other settings such as pagination and throttle
+}
+
+DJOSER={"USER_ID_FIELD":"username"}
